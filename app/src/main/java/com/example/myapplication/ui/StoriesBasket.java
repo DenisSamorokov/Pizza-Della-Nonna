@@ -1,12 +1,15 @@
 package com.example.myapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.model.MassClass;
 import com.example.myapplication.model.Order;
@@ -14,9 +17,11 @@ import com.example.myapplication.controller.OrderApi;
 import com.example.myapplication.model.Orders;
 import com.example.myapplication.R;
 import com.example.myapplication.controller.RetrofitClient;
+import com.example.myapplication.viewmodel.MainViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -28,6 +33,8 @@ public class StoriesBasket extends AppCompatActivity {
     TextView textView;
     Button button;
 
+    private MainViewModel mainViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,15 +43,13 @@ public class StoriesBasket extends AppCompatActivity {
         button = findViewById(R.id.back);
         View layout = findViewById(android.R.id.content);
         layout.setBackgroundColor(getResources().getColor(android.R.color.white));
-        button.setOnClickListener(view ->{
-            OrderApi orderApi = RetrofitClient.getClient().create(OrderApi.class);
-            Call<Orders> call = orderApi.getOrders(MassClass.phone);
-            call.enqueue(new Callback<Orders>() {
-                @Override
-                public void onResponse(Call<Orders> call, Response<Orders> response) {
 
-                    String str = "";
-                    for (Order order : response.body().data) {
+        mainViewModel = new ViewModelProvider( this).get(MainViewModel.class);
+        mainViewModel.getOrders().observe(StoriesBasket.this, new Observer<List<Order>>() {
+            @Override
+            public void onChanged(List<Order> orders) {
+                String str = "";
+                for (Order order : orders) {
                         Date date = new Date(order.time);
                         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd.MM.yy", Locale.getDefault());
                         String formattedDate = sdf.format(date);
@@ -57,20 +62,12 @@ public class StoriesBasket extends AppCompatActivity {
 
                     }
                     textView.setText(str);
-                }
-                @Override
-                public void onFailure(Call<Orders> call, Throwable t) {
-
-                }
-
-            });
-
-           //Intent intent = new Intent(this, MainActivity.class);
-           //startActivity(intent);
-            //this.finish();
+            }
         });
-       // Intent intent = getIntent();
-       // String phone = intent.getStringExtra("ph");
+        button.setOnClickListener(view ->{
+           Intent intent = new Intent(this, MainActivity.class);
+           startActivity(intent);
+        });
 
 
     }
