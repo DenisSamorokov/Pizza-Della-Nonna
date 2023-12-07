@@ -58,7 +58,7 @@ public class StoriesBasket extends AppCompatActivity {
 
                     str += order.product + "\n" + "Количество: " + order.count + '\n' + "Размер: "
                             + order.size + "\n" +
-                            "Адресс: " + order.address + "\n" +
+                            "Адрес: " + order.address + "\n" +
                             "Дата: " + formattedDate + "\n" +
                             "Цена: " +  order.price +  "₽" + "\n\n";
 
