@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <include
+        layout="@layout/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </include>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:src="@drawable/baseline_shopping_cart_24"
+        android:tint="@color/orange"
+        app:backgroundTint="@color/cr" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
