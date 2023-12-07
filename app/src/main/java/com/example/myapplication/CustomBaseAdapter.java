@@ -127,7 +127,6 @@ public class CustomBaseAdapter extends BaseAdapter {
                });
 
                button4.setOnClickListener(view1 -> {
-
                    MassClass.countMass.add(Integer.parseInt((String) textView2.getText().toString()));
                    MassClass.pizza.add((String) pizzatextview.getText().toString());
                    MassClass.size.add(currentSize);
