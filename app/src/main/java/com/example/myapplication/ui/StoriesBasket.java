@@ -37,40 +37,41 @@ public class StoriesBasket extends AppCompatActivity {
         View layout = findViewById(android.R.id.content);
         layout.setBackgroundColor(getResources().getColor(android.R.color.white));
         button.setOnClickListener(view ->{
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            OrderApi orderApi = RetrofitClient.getClient().create(OrderApi.class);
+            Call<Orders> call = orderApi.getOrders(MassClass.phone);
+            call.enqueue(new Callback<Orders>() {
+                @Override
+                public void onResponse(Call<Orders> call, Response<Orders> response) {
+
+                    String str = "";
+                    for (Order order : response.body().data) {
+                        Date date = new Date(order.time);
+                        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd.MM.yy", Locale.getDefault());
+                        String formattedDate = sdf.format(date);
+
+                        str += order.product + "\n" + "Количество: " + order.count + '\n' + "Размер: "
+                                + order.size + "\n" +
+                                "Адрес: " + order.address + "\n" +
+                                "Дата: " + formattedDate + "\n" +
+                                "Цена: " +  order.price +  "₽" + "\n\n";
+
+                    }
+                    textView.setText(str);
+                }
+                @Override
+                public void onFailure(Call<Orders> call, Throwable t) {
+
+                }
+
+            });
+
+           //Intent intent = new Intent(this, MainActivity.class);
+           //startActivity(intent);
             //this.finish();
         });
        // Intent intent = getIntent();
        // String phone = intent.getStringExtra("ph");
 
-        OrderApi orderApi = RetrofitClient.getClient().create(OrderApi.class);
-        Call<Orders> call = orderApi.getOrders(MassClass.phone);
-        call.enqueue(new Callback<Orders>() {
-            @Override
-            public void onResponse(Call<Orders> call, Response<Orders> response) {
-
-                String str = "";
-                for (Order order : response.body().data) {
-                    Date date = new Date(order.time);
-                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd.MM.yy", Locale.getDefault());
-                    String formattedDate = sdf.format(date);
-
-                    str += order.product + "\n" + "Количество: " + order.count + '\n' + "Размер: "
-                            + order.size + "\n" +
-                            "Адрес: " + order.address + "\n" +
-                            "Дата: " + formattedDate + "\n" +
-                            "Цена: " +  order.price +  "₽" + "\n\n";
-
-                }
-                textView.setText(str);
-            }
-            @Override
-            public void onFailure(Call<Orders> call, Throwable t) {
-
-            }
-
-        });
 
     }
 
