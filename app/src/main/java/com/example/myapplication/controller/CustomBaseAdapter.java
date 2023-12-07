@@ -1,11 +1,9 @@
-package com.example.myapplication;
+package com.example.myapplication.controller;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.health.connect.datatypes.units.Mass;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +13,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myapplication.R;
+import com.example.myapplication.model.MassClass;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class CustomBaseAdapter extends BaseAdapter {
     Context context;

@@ -1,11 +1,9 @@
-package com.example.myapplication;
+package com.example.myapplication.controller;
 
-import java.util.List;
+import com.example.myapplication.model.Orders;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface OrderApi {

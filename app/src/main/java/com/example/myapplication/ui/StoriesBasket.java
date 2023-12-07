@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,17 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.example.myapplication.model.MassClass;
+import com.example.myapplication.model.Order;
+import com.example.myapplication.controller.OrderApi;
+import com.example.myapplication.model.Orders;
+import com.example.myapplication.R;
+import com.example.myapplication.controller.RetrofitClient;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,9 +52,14 @@ public class StoriesBasket extends AppCompatActivity {
 
                 String str = "";
                 for (Order order : response.body().data) {
+                    Date date = new Date(order.time);
+                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd.MM.yy", Locale.getDefault());
+                    String formattedDate = sdf.format(date);
+
                     str += order.product + "\n" + "Количество: " + order.count + '\n' + "Размер: "
                             + order.size + "\n" +
                             "Адресс: " + order.address + "\n" +
+                            "Дата: " + formattedDate + "\n" +
                             "Цена: " +  order.price +  "₽" + "\n\n";
 
                 }

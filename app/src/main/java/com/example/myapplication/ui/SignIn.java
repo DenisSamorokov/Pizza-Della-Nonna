@@ -1,6 +1,4 @@
-package com.example.myapplication;
-
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+package com.example.myapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,10 +11,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.model.MassClass;
+import com.example.myapplication.model.Order;
+import com.example.myapplication.controller.OrderApi;
+import com.example.myapplication.model.Orders;
+import com.example.myapplication.R;
+import com.example.myapplication.controller.RetrofitClient;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import retrofit2.Call;
 import retrofit2.Callback;

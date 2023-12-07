@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".StoriesBasket">
+    tools:context=".ui.StoriesBasket">
 
     <ImageView
         android:id="@+id/imageView"
@@ -27,6 +27,18 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_background"
+        android:gravity="center"
+
+        android:text="Назад"
+        android:textColor="@color/white" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -51,17 +63,5 @@
                 android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>
-
-    <Button
-        android:id="@+id/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="0dp"
-        android:background="@drawable/button_background"
-        android:gravity="center"
-        android:text="Назад"
-        android:textColor="@color/white" />
 
 </LinearLayout>
