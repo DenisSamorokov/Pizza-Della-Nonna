@@ -9,16 +9,16 @@ public class Order {
     public String name;
     @SerializedName("address")
     public String address;
-    @SerializedName("product")
-    public String product;
+    @SerializedName("pizza")
+    public String pizza;
     @SerializedName("size")
     public String size;
     @SerializedName("price")
     public Integer price;
     @SerializedName("count")
     public Integer count;
-    @SerializedName("time")
-    public Long time;
+    @SerializedName("date_time")
+    public Long date_time;
 
     @Override
     public String toString() {
@@ -27,9 +27,9 @@ public class Order {
                 ", count=" + count +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", product='" + product + '\'' +
+                ", pizza='" + pizza + '\'' +
                 ", size='" + size + '\'' +
-                ", time=" + time +
+                ", date_time=" + date_time +
                 ", phone='" + phone + '\'' +
                 '}';
     }

@@ -142,9 +142,7 @@ public class CustomBaseAdapter extends BaseAdapter {
                imageButton2.setOnClickListener(view1 -> {
                    ii = ii - 1;
                    textView2.setText(String.valueOf(ii));
-
                    str = String.valueOf(curentPrice * Integer.parseInt(textView2.getText().toString()));
-
                    pricee.setText("Цена: " + str  + "₽");
                });
 

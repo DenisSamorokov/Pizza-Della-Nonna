@@ -1,5 +1,6 @@
 package com.example.myapplication.viewmodel;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
@@ -31,8 +32,9 @@ public class OrderRequest {
         call.enqueue(new Callback<Orders>() {
             @Override
             public void onResponse(Call<Orders> call, Response<Orders> response) {
-
+               Log.d("OrderInfo", String.valueOf(response.body().data));
                orders.postValue(response.body().data);
+
             }
             @Override
             public void onFailure(Call<Orders> call, Throwable t) {

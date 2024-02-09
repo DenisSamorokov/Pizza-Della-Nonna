@@ -58,8 +58,8 @@ public class SignIn extends AppCompatActivity {
                     order.price = MassClass.price.get(i);
                     order.size = MassClass.size.get(i);
                     order.name = name.getText().toString();
-                    order.product = MassClass.pizza.get(i);
-                    order.time = System.currentTimeMillis();
+                    order.pizza = MassClass.pizza.get(i);
+                    order.date_time = System.currentTimeMillis();
                     order.phone = phone.getText().toString();
                     orders.data.add(order);
                 }
@@ -93,7 +93,7 @@ public class SignIn extends AppCompatActivity {
             order.count = MassClass.countMass.get(i);
             order.price = MassClass.price.get(i);
             order.size = MassClass.size.get(i);
-            order.product = MassClass.pizza.get(i);
+            order.pizza = MassClass.pizza.get(i);
             orders.data.add(order);
         }
         textView1 = findViewById(R.id.textView12);
@@ -101,7 +101,7 @@ public class SignIn extends AppCompatActivity {
 
         String str = "";
         for (Order order : orders.data) {
-            str += order.product + "\n" + "Количество: " + order.count + '\n' + "Размер: "
+            str += order.pizza + "\n" + "Количество: " + order.count + '\n' + "Размер: "
                     + order.size + "\n" +
                     "Цена: " +  order.price  + "₽" +  "\n\n";
             pricee += order.price;

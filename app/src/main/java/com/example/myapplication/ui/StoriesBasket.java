@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -49,12 +50,13 @@ public class StoriesBasket extends AppCompatActivity {
             @Override
             public void onChanged(List<Order> orders) {
                 String str = "";
+
                 for (Order order : orders) {
-                        Date date = new Date(order.time);
+                        Date date = new Date(order.date_time);
                         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd.MM.yy", Locale.getDefault());
                         String formattedDate = sdf.format(date);
 
-                        str += order.product + "\n" + "Количество: " + order.count + '\n' + "Размер: "
+                        str += order.pizza + "\n" + "Количество: " + order.count + '\n' + "Размер: "
                                 + order.size + "\n" +
                                 "Адрес: " + order.address + "\n" +
                                 "Дата: " + formattedDate + "\n" +
@@ -62,6 +64,7 @@ public class StoriesBasket extends AppCompatActivity {
 
                     }
                     textView.setText(str);
+
             }
         });
         button.setOnClickListener(view ->{
